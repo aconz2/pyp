@@ -48,6 +48,7 @@ def make_env(name=None):
             ]),
         'VIRTUAL_ENV': str(vp / name)
         })
+    # TBH I don't know what these do but pew does it
     env.pop('PYTHONHOME', None)
     env.pop('__PYENV_LAUNCHER__', None)
     return env
