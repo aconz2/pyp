@@ -49,7 +49,7 @@ def make_env(name=None):
         'VIRTUAL_ENV': str(vp / name)
         })
     env.pop('PYTHONHOME', None)
-    env.pop('__PYENV_LAUNCHER', None)
+    env.pop('__PYENV_LAUNCHER__', None)
     return env
 
 def main():
