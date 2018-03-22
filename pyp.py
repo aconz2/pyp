@@ -61,7 +61,7 @@ def make_env(name=None):
 def main():
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument('--where', default=False, action='store_true', help='like pipenv --where')
+    parser.add_argument('--venv', default=False, action='store_true', help='like pipenv --where')
     parser.add_argument('--name', default=None, help='Virtualenv name')
     parser.add_argument('rest', nargs='*', default=('bash', '--noprofile'))
     args = parser.parse_args()
