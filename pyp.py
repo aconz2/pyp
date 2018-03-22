@@ -36,6 +36,11 @@ def virtualenv_name():
 def virtualenvs_path():
     return Path('~/.local/share/virtualenvs').expanduser()
 
+def where_env(name=None):
+    name = name or virtualenv_name()
+    vp = virtualenvs_path()
+    return str(vp / name)
+
 def make_env(name=None):
     name = name or virtualenv_name()
 
@@ -56,11 +61,15 @@ def make_env(name=None):
 def main():
     import argparse
     parser = argparse.ArgumentParser()
+    parser.add_argument('--where', default=False, action='store_true', help='like pipenv --where')
     parser.add_argument('--name', default=None, help='Virtualenv name')
     parser.add_argument('rest', nargs='*', default=('bash', '--noprofile'))
     args = parser.parse_args()
 
-    os.execvpe(args.rest[0], args.rest, make_env(name=args.name))
+    if args.where:
+        print(where_env(args.name))
+    else:
+        os.execvpe(args.rest[0], args.rest, make_env(name=args.name))
 
 if __name__ == '__main__':
     main()
