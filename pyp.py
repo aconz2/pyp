@@ -66,7 +66,7 @@ def main():
     parser.add_argument('rest', nargs='*', default=('bash', '--noprofile'))
     args = parser.parse_args()
 
-    if args.where:
+    if args.venv:
         print(where_env(args.name))
     else:
         os.execvpe(args.rest[0], args.rest, make_env(name=args.name))
